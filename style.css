@@ -1,0 +1,128 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+    margin: 20px;
+    background-color: #f0f8ff;
+}
+
+h1 {
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+}
+
+.xkcd-link {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 10px;
+}
+
+.xkcd-link a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #428bca;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.xkcd-link a:hover {
+    color: #3071a9;
+    text-decoration: underline;
+}
+
+.container {
+    position: relative; /* Needed for absolute positioning inside */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 380px; /* Adjusted for more space */
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 40px 20px 20px; /* Extra top padding for the link */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.input-area, .output-area {
+    width: 35%;
+    padding: 15px;
+    text-align: left;
+}
+
+.buttons {
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons button {
+    margin: 10px 0;
+    padding: 12px 24px;
+    font-size: 16px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+textarea {
+    width: 100%;
+    height: 120px; /* Increased size */
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none; /* Disable resizing */
+    font-size: 16px;
+    overflow: hidden; /* Hide scrollbar */
+}
+
+button {
+    padding: 12px 24px;
+    background-color: #428bca;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #3071a9;
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 95%;
+        height: auto; /* Adjust height for smaller screens */
+    }
+
+    .input-area, .output-area, .buttons {
+        width: 100%;
+        text-align: center;
+    }
+
+    textarea {
+        height: 100px; /* Slightly smaller for mobile */
+    }
+
+    .buttons button {
+        margin: 5px;
+        width: 80%;
+    }
+}
