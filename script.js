@@ -109,3 +109,8 @@ for (const [key, value] of Object.entries(cipherMap)) {
         inputTextArea.value += value;
     });
 }
+
+document.getElementById("key-delete").addEventListener("click", () => {
+    const event = new KeyboardEvent('keydown', { key: 'Backspace' });
+    inputTextArea.dispatchEvent(event);
+});

@@ -123,6 +123,14 @@ button:active {
     font-size: 1.25rem;
 }
 
+.delete-key {
+    background-color: #d9534f;
+}
+
+.delete-key:hover {
+    background-color: #c9302c;
+}
+
 @media (max-width: 600px) {
     .container {
         padding: 1rem;
