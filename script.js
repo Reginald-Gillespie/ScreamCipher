@@ -49,6 +49,60 @@ decodeButton.addEventListener('click', () => {
     outputTextArea.value = decodedText;
 });
 
+// Fix the backspace key by default not deleting an entire "letter"
+inputTextArea.addEventListener('keydown', (event) => {
+    if (event.key === 'Backspace' || event.key === 'Delete') {
+        const { selectionStart, selectionEnd, value } = inputTextArea;
+
+        // If text is selected, default behavior is fine
+        if (selectionStart !== selectionEnd) return;
+
+        event.preventDefault();
+
+        let newValue;
+        let newCursorPos = selectionStart;
+
+        if (typeof Intl.Segmenter === 'function') {
+            const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });
+            const segments = [...segmenter.segment(value)];
+
+            let charCount = 0;
+            for (let i = 0; i < segments.length; i++) {
+                charCount += segments[i].segment.length;
+
+                // Handle Backspace (delete previous character)
+                if (event.key === 'Backspace' && charCount >= selectionStart) {
+                    newCursorPos -= segments[i].segment.length;
+                    segments.splice(i, 1);
+                    break;
+                }
+
+                // Handle Delete (delete next character)
+                if (event.key === 'Delete' && charCount > selectionStart) {
+                    segments.splice(i, 1);
+                    break;
+                }
+            }
+
+            newValue = segments.map(s => s.segment).join('');
+        } 
+        // Fallback to regex-based deletion
+        else {
+            if (event.key === 'Backspace') {
+                newValue = value.replace(/(\P{M}\p{M}*)$/u, '');
+                newCursorPos = newValue.length;
+            } else if (event.key === 'Delete') {
+                newValue = value.substring(0, selectionStart) + value.substring(selectionStart + 1);
+            }
+        }
+
+        inputTextArea.value = newValue;
+        inputTextArea.setSelectionRange(newCursorPos, newCursorPos);
+    }
+});
+
+
+
 for (const [key, value] of Object.entries(cipherMap)) {
     const button = document.getElementById(`key-${key}`);
     button.addEventListener('click', () => {
