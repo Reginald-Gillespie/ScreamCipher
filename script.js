@@ -29,12 +29,11 @@ function encodeText(text) {
 }
 
 function decodeText(text) {
-    let decodedText = '';
-    for (let i = 0; i < text.length; i++) {
-        const char = text[i];
-        decodedText += reverseCipherMap[char] || char; // Use original char if not in map
-    }
-    return decodedText;
+    const keys = Object.keys(reverseCipherMap).sort((a, b) => b.length - a.length);
+    keys.forEach(key => {
+        text = text.replaceAll(key, reverseCipherMap[key]);
+    })
+    return text;
 }
 
 
