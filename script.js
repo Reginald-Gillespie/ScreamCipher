@@ -48,3 +48,10 @@ decodeButton.addEventListener('click', () => {
     const decodedText = decodeText(inputText);
     outputTextArea.value = decodedText;
 });
+
+for (const [key, value] of Object.entries(cipherMap)) {
+    const button = document.getElementById(`key-${key}`);
+    button.addEventListener('click', () => {
+        inputTextArea.value += value;
+    });
+}
