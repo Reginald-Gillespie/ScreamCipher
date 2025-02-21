@@ -12,24 +12,30 @@
             <a href="https://xkcd.com/3054/" target="_blank">🔗 XKCD #3054</a>
         </div>
 
-        <div class="input-area">
-            <label for="input">Enter Text:</label>
-            <textarea id="input" rows="4" cols="30"></textarea>
+        <div class="input-section">
+            <div class="text-container">
+                <div class="input-area">
+                    <label for="input">Enter Text:</label>
+                    <textarea id="input" rows="4" cols="30"></textarea>
+                </div>
+            </div>
+            <div class="text-container">
+                <div class="output-area">
+                    <label for="output">Result:</label>
+                    <textarea id="output" rows="4" cols="30" readonly></textarea>
+                </div>
+            </div>
         </div>
-
+        
         <div class="buttons">
             <button id="encode">Encode</button><br>
             <button id="decode">Decode</button>
         </div>
+        
 
-        <div class="output-area">
-            <label for="output">Result:</label>
-            <textarea id="output" rows="4" cols="30" readonly></textarea>
-        </div>
-    </div>
-
-    <div class="container">
         <div class="keypad">
+            <h2 class="keyboard-header">Keyboard:</h2>
+            
             <div class="key-row">
                 <button class="key" id="key-A">A</button>
                 <button class="key" id="key-B">Ȧ</button>
@@ -67,6 +73,7 @@
                 <button class="key" id="key-Z">Ⱥ</button>
             </div>
         </div>
+
     </div>
 
     <script src="script.js"></script>
