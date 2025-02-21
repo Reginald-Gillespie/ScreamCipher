@@ -38,13 +38,13 @@ function decodeText(text) {
 
 
 encodeButton.addEventListener('click', () => {
-    const inputText = inputTextArea.value;
+    const inputText = inputTextArea.value.normalize('NFC');
     const encodedText = encodeText(inputText);
     outputTextArea.value = encodedText;
 });
 
 decodeButton.addEventListener('click', () => {
-    const inputText = inputTextArea.value;
+    const inputText = inputTextArea.value.normalize('NFC');
     const decodedText = decodeText(inputText);
     outputTextArea.value = decodedText;
 });
