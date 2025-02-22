@@ -9,7 +9,14 @@ const cipherMap = {
     'K': 'Ạ',   'L': 'Ă',   'M': 'Ǎ',   'N': 'Â',   'O': 'Å',
     'P': 'A̯',   'Q': 'A̤',   'R': 'Ȃ',   'S': 'Ã',   'T': 'Ā',
     'U': 'Ä',   'V': 'À',   'W': 'Ȁ',   'X': 'A̽',   'Y': 'A̦',
-    'Z': 'Ⱥ'
+    'Z': 'Ⱥ',
+
+    'a': 'a',   'b': 'ȧ',   'c': 'a̧',   'd': 'a̲',   'e': 'á',
+    'f': 'a̮',   'g': 'a̋',   'h': 'a̰',   'i': 'ả',   'j': 'a̓',
+    'k': 'ạ',   'l': 'ă',   'm': 'ǎ',   'n': 'â',   'o': 'å',
+    'p': 'a̯',   'q': 'a̤',   'r': 'ȃ',   's': 'ã',   't': 'ā',
+    'u': 'ä',   'v': 'à',   'w': 'ȁ',   'x': 'a̽',   'y': 'a̦',
+    'z': 'ⱥ'
 };
 
 const reverseCipherMap = {};
@@ -20,7 +27,7 @@ for (const key in cipherMap) {
 
 function encodeText(text) {
     let encodedText = '';
-    text = text.toUpperCase();
+    text = text;
     for (let i = 0; i < text.length; i++) {
         const char = text[i];
         encodedText += cipherMap[char] || char; // Use original char if not in map
