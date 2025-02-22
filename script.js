@@ -112,9 +112,11 @@ inputTextArea.addEventListener('keydown', (event) => {
 
 for (const [key, value] of Object.entries(cipherMap)) {
     const button = document.getElementById(`key-${key}`);
-    button.addEventListener('click', () => {
-        inputTextArea.value += value;
-    });
+    if (button) { // There are not lowercase buttons atm
+        button.addEventListener('click', () => {
+            inputTextArea.value += value;
+        });
+    }
 }
 
 document.getElementById("key-delete").addEventListener("click", () => {
