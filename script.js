@@ -26,9 +26,15 @@ const cipherMap = {
     'ᴢ': 'ᴀ̷'
 };
 
+// for ambiguous characters
+const reverseCipherMapExtras = {'A̱': 'D'}
+
 const reverseCipherMap = {};
 for (const key in cipherMap) {
     reverseCipherMap[cipherMap[key]] = key;
+}
+for (const key in reverseCipherMapExtras) {
+    reverseCipherMap[key] = reverseCipherMapExtras[key];
 }
 
 
